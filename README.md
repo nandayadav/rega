@@ -1,5 +1,5 @@
 # Rega
-
+Keep it simple
 TODO: Write a gem description
 
 ## Installation

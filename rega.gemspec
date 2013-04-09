@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Rega::VERSION
   spec.authors       = ["Nanda Yadav"]
   spec.email         = ["nandayadav@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{TODO: Generate JSON responses for Vega}
+  spec.summary       = %q{TODO: This library provides simple Wrapper for generatin JSON that's consumed by VEGA(visualization grammar based on d3.js)}
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -20,4 +20,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency "multi_json"
+  spec.add_development_dependency "rspec", "~> 2.6"
 end
