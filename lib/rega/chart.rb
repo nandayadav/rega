@@ -1,9 +1,11 @@
 require 'json'
 module Rega
   class Chart
-    def initialize(data, options = {})
-      @height = options[:height] || 500
-      @width = options[:width] || 500
+    
+    attr_reader :height
+    
+    def initialize(data, height: 500, width: 500)
+      @height, @width = height, width
       @data = data
     end
     

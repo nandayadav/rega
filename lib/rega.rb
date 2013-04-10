@@ -1,5 +1,5 @@
-require "rega/version"
-require 'rega/chart'
+require_relative "rega/version"
+require_relative 'rega/chart'
 
 module Rega
   
