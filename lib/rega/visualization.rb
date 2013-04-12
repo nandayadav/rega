@@ -13,7 +13,7 @@ module Rega
     end
     
     def attributes
-      h = {:name => @name, :width => @width, :height => @height}
+      h = {name: @name, width: @width, height: @height}
       h[:padding] = @padding if @padding
       h
     end

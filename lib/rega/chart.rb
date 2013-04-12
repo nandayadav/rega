@@ -3,7 +3,7 @@ module Rega
   #This class composes end json by comibining Visualization object, data object..
   class Chart
     
-    attr_accessor :visualization, :axes, :scales, :data
+    attr_accessor :visualization, :axes, :scales, :data, :marks
     def initialize(name, **options)
       @name = name
       options.each { |name, value| instance_variable_set("@#{name}", value) }
@@ -16,7 +16,7 @@ module Rega
       h[:data] = [@data.attributes]
       h[:scales] = @scales.map(&:attributes)
       h[:axes] = @axes.map(&:attributes) if @axes
-      h[:marks] = @marks
+      h[:marks] = [@marks.attributes]
       h
     end
     

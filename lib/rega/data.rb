@@ -9,7 +9,7 @@ module Rega
     
     #h[:data] = [{:name => 'table', :values => [{:x => 10, :y => 28}, {:x => 20, :y => 55}, {:x => 30, :y => 43}] }]
     def attributes
-      h = {:name => @name}
+      h = {name: @name}
       if @values
         h[:values] = @values
       elsif @url #Could be a json endpoint or csv/tsv url
