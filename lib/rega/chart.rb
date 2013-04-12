@@ -1,16 +1,27 @@
 require 'json'
 module Rega
+  #This class composes end json by comibining Visualization object, data object..
   class Chart
     
-    attr_reader :height
-    
-    def initialize(data, height: 500, width: 500)
-      @height, @width = height, width
-      @data = data
+    attr_accessor :visualization, :axes, :scales, :data
+    def initialize(name, **options)
+      @name = name
+      options.each { |name, value| instance_variable_set("@#{name}", value) }
     end
     
-    def generate_json
-      h = {:height => @height, :width => @width}
+    #Need - visualization, scales, marks and data
+    #Optional - axes
+    def generate
+      h = @visualization.attributes
+      h[:data] = [@data.attributes]
+      h[:scales] = @scales.map(&:attributes)
+      h[:axes] = @axes.map(&:attributes) if @axes
+      h[:marks] = @marks
+      h
+    end
+    
+    def sample_json
+      h = {:height => 400, :width => 400}
       h[:data] = [{:name => 'table', :values => [{:x => 10, :y => 28}, {:x => 20, :y => 55}, {:x => 30, :y => 43}] }]
       h[:scales] = [
                          {:name => 'x', :type => 'ordinal', :range => 'width', :domain => {:data => 'table', :field => 'data.x'}},

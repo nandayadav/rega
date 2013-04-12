@@ -1,9 +1,21 @@
 module Rega
+  
+  #https://github.com/trifacta/vega/wiki/Scales
   class Scale
-    def initialize(options = {})
-      @type = options[:type] || 'linear'#Ordinal, linear, time...
-      @name = options[:name]
-      @domain = options[:domain] || []
+    
+    def initialize(name: "", type: "linear", domain: [], range: [], **options)
+      @name, @type = name, type
+      @domain, @range = domain, range
+      options.each { |name, value| instance_variable_set("@#{name}", value) }
+    end
+    
+    def attributes
+      h = {name: @name}
+      h[:type] = @type if @type
+      h[:range] = @range
+      h[:domain] = @domain
+      h[:range] = @range
+      h
     end
     
   end
