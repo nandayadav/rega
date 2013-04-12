@@ -2,7 +2,9 @@ module Rega
   
   #Represents a generic bar chart with defaults in place
   class Bar < Chart
+    extend Forwardable
     
+    def_delegators :@marks, :fillcolor, :fillcolor=
     
     def initialize(values: [])
       @values = values #Array of values for data
@@ -21,16 +23,6 @@ module Rega
                       Rega::Axis.new(scale: 'y', type: 'y')
                     ]
       @marks = Rega::Mark.new
-    end
-    
-    
-    #TODO: Replace this by delegation/forwardable 
-    def fillcolor
-      @marks.fillcolor
-    end
-    
-    def fillcolor=(val)
-      @marks.fillcolor = val
     end
     
     
