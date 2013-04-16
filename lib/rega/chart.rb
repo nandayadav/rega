@@ -23,7 +23,7 @@ module Rega
       yield self if block_given?
       h = @visualization.attributes
       h[:data] = [@data.attributes]
-      h[:scales] = @scales.map(&:attributes)
+      h[:scales] = @scales.map(&:attributes) if @scales
       h[:axes] = @axes.map(&:attributes) if @axes
       h[:marks] = [@marks.attributes]
       h

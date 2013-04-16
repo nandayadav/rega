@@ -16,12 +16,15 @@ module Rega
         h[:properties] = bar_properties
       elsif @type == 'area' 
         h[:properties] = area_properties
-      else
+      elsif @type == 'scatter'
         h[:properties] = scatter_properties
+      else
+        h[:properties] = arc_properties
       end
       h
     end
     
+    #Properties for bar chart
     def bar_properties
       { 
         enter: {
@@ -35,6 +38,7 @@ module Rega
       }
     end
     
+    #Properties for Area chart
     def area_properties
       { 
         enter: {
@@ -48,6 +52,7 @@ module Rega
       }
     end
     
+    #Properties for Scatter Plot
     def scatter_properties
       { 
         enter: {
@@ -56,6 +61,23 @@ module Rega
                   },
         update: {fill: {value: @fill_color}, size: {value: 50}},
         hover: {fill: {value: @hover_color}, size: {value: 80}}
+      }
+    end
+    
+    #Properties for Donut/Pie charts
+    def arc_properties
+      { 
+        enter: {
+                          x: {value: 200},
+                          y: {value: 200},
+                          startAngle: {field: 'startAngle'},
+                          endAngle: {field: 'endAngle'},
+                          innerRadius: {value: 80},
+                          outerRadius: {value: 130},
+                          stroke: {value: '#fff'}
+                  },
+        update: {fill: {value: @fill_color}},
+        hover: {fill: {value: @hover_color}}
       }
     end
     

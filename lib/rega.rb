@@ -8,6 +8,7 @@ require_relative 'rega/bar'
 require_relative 'rega/mark'
 require_relative 'rega/area'
 require_relative 'rega/scatter_plot'
+require_relative 'rega/donut'
 module Rega
   
   # Your code goes here...

@@ -19,13 +19,8 @@ module Rega
         h[:url] = @url
         h[:format] = @format
       end
+      h[:transform] = [@transform] if @transform
       h
-    end
-    
-    def validate
-      if @values.nil? && @url.nil?
-        raise Exception.new("Either values or url is required")
-      end
     end
     
   end
