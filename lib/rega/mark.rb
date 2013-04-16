@@ -12,7 +12,7 @@ module Rega
     
     def attributes
       h = {type: @type, from: {data: 'table'}}
-      if @type == 'bar'
+      if @type == 'rect'
         h[:properties] = bar_properties
       elsif @type == 'area' 
         h[:properties] = area_properties
