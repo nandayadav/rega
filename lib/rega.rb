@@ -6,6 +6,8 @@ require_relative 'rega/scale'
 require_relative 'rega/axis'
 require_relative 'rega/bar'
 require_relative 'rega/mark'
+require_relative 'rega/area'
+require_relative 'rega/scatter_plot'
 module Rega
   
   # Your code goes here...

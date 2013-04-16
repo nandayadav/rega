@@ -1,18 +1,20 @@
 <html>
   <head>
     <title>Vega Scaffold</title>
-    <link rel="stylesheet" href="http://trifacta.github.com/vega/css/vega.css"/>
     <script src="http://trifacta.github.com/vega/d3.v3.min.js"></script>
     <script src="http://trifacta.github.com/vega/vega.js"></script>
   </head>
   <body>
-    <div id="vis"></div>
+    <div id="bar"></div>
+    <div id="area" style="float: left;"></div>
+    <div id="scatter"></div>
   </body>
   <script type="text/javascript">
     // parse a spec and create a visualization view
-    function parse(spec) {
-      vg.parse.spec(spec, function(chart) { chart({el:"#vis"}).update(); });
+    function parse(spec, container) {
+      vg.parse.spec(spec, function(chart) { chart({el: container}).update(); });
     }
-    parse("http://localhost:3002/chart");
+    parse("http://localhost:3002/area", "#area");
+    parse("http://localhost:3002/scatter_plot", "#scatter");
   </script>
 </html>

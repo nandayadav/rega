@@ -1,29 +1,27 @@
 module Rega
   
-  #Represents a generic bar chart with defaults in place
-  #Use case: b = Bar.new([{x: 100, y: 200}, {x: 12, y: 45}, ..]); b.generate_json
-  
-  class Bar < Chart
+  #Represents a generic area chart
+  class ScatterPlot < Chart
     
   
     def initialize(values: [], **options)
-      @values = values
+      @values = values #Array of values for data
       options.each { |name, value| instance_variable_set("@#{name}", value) }
       associate_defaults
     end
     
     def associate_defaults
-      @visualization = Rega::Visualization.new(name: "bar", padding: { left: 30, right: 30, top: 10, bottom: 40})
+      @visualization = Rega::Visualization.new(name: "scatter", padding: { left: 30, right: 30, top: 10, bottom: 40})
       @data = @url ? Rega::Data.new(name: 'table', url: @url) : Rega::Data.new(name: 'table', values: @values)
       @scales = [
-                        Rega::Scale.new(name: 'x', type: 'ordinal', range: 'width', domain: {data: 'table', field: 'data.x'}),
+                        Rega::Scale.new(name: 'x', range: 'width', zero: false, domain: {data: 'table', field: 'data.x'}),
                         Rega::Scale.new(name: 'y', range: 'height', domain: {data: 'table', field: 'data.y'})
                       ]
       @axes = [
                       Rega::Axis.new(scale: 'x', type: 'x'),
                       Rega::Axis.new(scale: 'y', type: 'y')
                     ]
-      @marks = Rega::Mark.new
+      @marks = Rega::Mark.new(type: 'symbol')
     end
     
     

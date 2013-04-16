@@ -6,7 +6,7 @@ module Rega
     #Ignoring viewport
     attr_reader :name, :width, :height, :padding
     
-    def initialize(name: "", width: 500, height: 500, **options)
+    def initialize(name: "", width: 300, height: 400, **options)
       @name = name
       @width, @height = width, height
       options.each { |name, value| instance_variable_set("@#{name}", value) }

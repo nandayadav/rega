@@ -15,6 +15,8 @@ module Rega
       h[:range] = @range
       h[:domain] = @domain
       h[:range] = @range
+      h[:nice] = @nice if @nice
+      h[:zero] = @zero if !@zero.nil?
       h
     end
     

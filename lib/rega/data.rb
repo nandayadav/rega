@@ -1,5 +1,8 @@
 module Rega
   #https://github.com/trifacta/vega/wiki/Data
+  #Requirements/Specifications
+  #1. Inline data, 2. dynamically loaded via json/csv..
+  #One of either values, source or url must be defined 
   class Data
     
     def initialize(name: '', format: 'json', **options)
@@ -17,6 +20,12 @@ module Rega
         h[:format] = @format
       end
       h
+    end
+    
+    def validate
+      if @values.nil? && @url.nil?
+        raise Exception.new("Either values or url is required")
+      end
     end
     
   end
