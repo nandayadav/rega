@@ -5,9 +5,9 @@ module Rega
     
       attr_accessor :inner_radius
       
-      def initialize(inner_radius: 80, outer_radius: 130, **options)
+      def initialize(inner_radius: 80, outer_radius: 130, stroke_color: '#fff', stroke_width: 2, **options)
         @type = 'arc'
-        @inner_radius, @outer_radius = inner_radius, outer_radius
+        @inner_radius, @outer_radius, @stroke_color, @stroke_width = inner_radius, outer_radius, stroke_color, stroke_width
         super(**options)
       end
       
@@ -22,9 +22,10 @@ module Rega
                       endAngle: {field: 'endAngle'},
                       innerRadius: {value: @inner_radius},
                       outerRadius: {value: @outer_radius},
-                      stroke: {value: '#fff'}
+                      stroke: {value: @stroke_color},
+                      strokeWidth: {value: @stroke_width}
                     },
-          update: {fill: {value: @fill_color}},
+          update: {fill: {scale: 'color'}},
           hover: {fill: {value: @hover_color}}
         }
       end

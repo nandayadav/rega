@@ -1,7 +1,7 @@
 require 'json'
 require 'forwardable'
 module Rega
-  #This class composes end json by comibining Visualization object, data object..
+  #This class composes end json by comibining Visualization object, data object, axes, scales..
   class Chart
     
     extend Forwardable
@@ -10,7 +10,10 @@ module Rega
     def_delegators :@marks, :fill_opacity, :fill_opacity=
     def_delegators :@marks, :hover_opacity, :hover_opacity=
     def_delegators :@marks, :hover_color, :hover_color=
+    
+    #Donut/Pie Chart specific
     def_delegators :@marks, :inner_radius, :inner_radius=
+    def_delegators :@marks, :stroke_width, :stroke_width=
     
     attr_accessor :visualization, :axes, :scales, :data, :marks
     
@@ -19,8 +22,8 @@ module Rega
       options.each { |name, value| instance_variable_set("@#{name}", value) }
     end
     
-    #Need - visualization, scales, marks and data
-    #Optional - axes
+    #Need - visualization, marks and data
+    #Optional - scales, axes(in some cases)
     def generate(&block)
       yield self if block_given?
       h = @visualization.attributes
