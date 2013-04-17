@@ -59,6 +59,12 @@ class App < Sinatra::Base
     c.to_json
   end
   
+  get '/line' do
+    chart = Rega::Line.new(values: [{ x: 1, y: 20}, { x: 2, y: 12}, { x: 3, y: 52}, { x: 4, y: 102}]) 
+    c = chart.generate
+    c.to_json
+  end
+  
   get '/data' do
     #[{x: 45, y: 33}, {x: 23, y: 44}, {x: 56, y: 34}].to_json
     [{ x: 1, y: 20}, { x: 2, y: 12}, { x: 3, y: 52}, { x: 4, y: 12}].to_json

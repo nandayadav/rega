@@ -9,10 +9,12 @@ require_relative 'rega/marks/rect'
 require_relative 'rega/marks/area'
 require_relative 'rega/marks/symbol'
 require_relative 'rega/marks/arc'
+require_relative 'rega/marks/line'
 require_relative 'rega/bar'
 require_relative 'rega/area'
 require_relative 'rega/scatter_plot'
 require_relative 'rega/donut'
+require_relative 'rega/line'
 module Rega
   
   # Your code goes here...
