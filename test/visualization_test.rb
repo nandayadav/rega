@@ -9,10 +9,10 @@ class VisualizationTest <  MiniTest::Unit::TestCase
   def test_attributes
     attrs = @visualization.attributes
     assert_kind_of Hash, attrs
-    assert_equal attrs[:height], 200
-    assert_equal attrs[:name], "Bar"
-    assert_equal attrs[:width], 300
-    assert_equal attrs[:padding], nil
+    assert_equal 200, attrs[:height]
+    assert_equal "Bar", attrs[:name]
+    assert_equal 300, attrs[:width]
+    assert_equal nil, attrs[:padding]
   end
   
 end

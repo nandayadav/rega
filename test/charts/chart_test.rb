@@ -20,10 +20,10 @@ class ChartTest <  MiniTest::Unit::TestCase
   end
   
   def test_customization
-    assert_equal @chart.marks.fill_color, 'red'
+    assert_equal 'red', @chart.marks.fill_color
     c = @chart.generate do |config|
       config.fill_color = "purple"
     end
-    assert_equal @chart.marks.fill_color, 'purple'
+    assert_equal 'purple', @chart.marks.fill_color
   end
 end
