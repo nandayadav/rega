@@ -10,8 +10,10 @@ module Rega
     def_delegators :@marks, :fill_opacity, :fill_opacity=
     def_delegators :@marks, :hover_opacity, :hover_opacity=
     def_delegators :@marks, :hover_color, :hover_color=
+    def_delegators :@marks, :inner_radius, :inner_radius=
     
     attr_accessor :visualization, :axes, :scales, :data, :marks
+    
     def initialize(name, **options)
       @name = name
       options.each { |name, value| instance_variable_set("@#{name}", value) }

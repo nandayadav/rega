@@ -11,17 +11,17 @@ module Rega
     end
     
     def associate_defaults
-      @visualization = Rega::Visualization.new(name: "scatter", padding: { left: 30, right: 30, top: 10, bottom: 40})
-      @data = @url ? Rega::Data.new(name: 'table', url: @url) : Rega::Data.new(name: 'table', values: @values)
+      @visualization = Visualization.new(name: "scatter", padding: { left: 30, right: 30, top: 10, bottom: 40})
+      @data = @url ? Data.new(name: 'table', url: @url) : Data.new(name: 'table', values: @values)
       @scales = [
-                        Rega::Scale.new(name: 'x', range: 'width', zero: false, domain: {data: 'table', field: 'data.x'}),
-                        Rega::Scale.new(name: 'y', range: 'height', domain: {data: 'table', field: 'data.y'})
+                        Scale.new(name: 'x', range: 'width', zero: false, domain: {data: 'table', field: 'data.x'}),
+                        Scale.new(name: 'y', range: 'height', domain: {data: 'table', field: 'data.y'})
                       ]
       @axes = [
-                      Rega::Axis.new(scale: 'x', type: 'x'),
-                      Rega::Axis.new(scale: 'y', type: 'y')
+                      Axis.new(scale: 'x', type: 'x'),
+                      Axis.new(scale: 'y', type: 'y')
                     ]
-      @marks = Rega::Mark.new(type: 'symbol')
+      @marks = Marks::Symbol.new
     end
     
     

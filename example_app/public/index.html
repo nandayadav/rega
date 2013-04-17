@@ -5,9 +5,15 @@
     <script src="http://trifacta.github.com/vega/vega.js"></script>
   </head>
   <body>
-    <div id="bar" style="float: left; width: 400px;"></div>
-    <div id="area" style="float: left; width: 400px;"></div>
-    <div id="donut" style="float: left; width: 400px;"></div>
+    <div style="width: 1100px;">
+      <div id="bar" style="float: left;"></div>
+      <div id="area" style="float: left;"></div>
+      <div id="donut" style="float: right;"></div>
+    </div>
+    <div style="width: 900px;">
+      <div id="pie" style="float: left;"></div>
+      <div id="scatter" style="float: right;"></div>
+    </div>
   </body>
   <script type="text/javascript">
     // parse a spec and create a visualization view
@@ -17,5 +23,7 @@
     parse("http://localhost:3002/bar", "#bar");
     parse("http://localhost:3002/area", "#area");
     parse("http://localhost:3002/donut", "#donut");
+    parse("http://localhost:3002/pie", "#pie");
+    parse("http://localhost:3002/scatter_plot", "#scatter");
   </script>
 </html>

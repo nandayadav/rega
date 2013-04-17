@@ -11,10 +11,10 @@ module Rega
     end
     
     def associate_defaults
-      @visualization = Rega::Visualization.new(name: "donut", padding: { left: 30, right: 30, top: 10, bottom: 40})
+      @visualization = Visualization.new(name: "donut", padding: { left: 30, right: 30, top: 10, bottom: 40})
       #Note the data transform used here..
-      @data = Rega::Data.new(name: 'table', values: @values, transform: {type: 'pie', value: 'data'})
-      @marks = Rega::Mark.new(type: "arc")
+      @data = Data.new(name: 'table', values: @values, transform: {type: 'pie', value: 'data'})
+      @marks = Marks::Arc.new
     end
     
   end  
