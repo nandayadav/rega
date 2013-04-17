@@ -1,9 +1,9 @@
-require_relative 'test_helper'
+require_relative '../test_helper'
 
 class ChartTest <  MiniTest::Unit::TestCase
 
   def setup
-    @chart = Rega::Chart.new
+    @chart = Rega::Charts::Chart.new
     @chart.visualization = Rega::Visualization.new(height: 200, padding: { left: 10, right: 10, top: 10 })
     @chart.data = Rega::Data.new(name: "table", values: [ { x: 10, y: 20}, { x: 23, y: 12} ])
     @chart.scales = [Rega::Scale.new(name: 'x', type: 'ordinal', range: 'width', domain: {data: 'table', field: 'data.x'})]
