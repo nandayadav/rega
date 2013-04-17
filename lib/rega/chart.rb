@@ -17,8 +17,7 @@ module Rega
     
     attr_accessor :visualization, :axes, :scales, :data, :marks
     
-    def initialize(name, **options)
-      @name = name
+    def initialize(**options)
       options.each { |name, value| instance_variable_set("@#{name}", value) }
     end
     
@@ -30,7 +29,7 @@ module Rega
       h[:data] = [@data.attributes]
       h[:scales] = @scales.map(&:attributes) if @scales
       h[:axes] = @axes.map(&:attributes) if @axes
-      h[:marks] = [@marks.attributes]
+      h[:marks] = [@marks.attributes] if @marks
       h
     end
   end
