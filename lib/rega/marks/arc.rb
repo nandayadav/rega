@@ -25,7 +25,7 @@ module Rega
                       stroke: {value: @stroke_color},
                       strokeWidth: {value: @stroke_width}
                     },
-          update: {fill: {scale: 'color'}},
+          update: {fill: {scale: 'color', field: @field}},
           hover: {fill: {value: @hover_color}}
         }
       end

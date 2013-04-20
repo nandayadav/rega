@@ -17,8 +17,11 @@ module Rega
       def_delegators :@marks, :inner_radius, :inner_radius=
       def_delegators :@marks, :stroke_width, :stroke_width=
       
-      attr_accessor :visualization, :axes, :scales, :data, :marks
-      VALID_ATTRS = %w(visualization axes scales data marks)
+      #Transform attr
+      def_delegators :@data, :transform, :transform=
+      
+      attr_accessor :visualization, :axes, :scales, :data, :marks, :url
+      VALID_ATTRS = %w(visualization axes scales data marks url)
       
       def initialize(**options)
         options.each { |name, value| instance_variable_set("@#{name}", value) if VALID_ATTRS.include?(name) }

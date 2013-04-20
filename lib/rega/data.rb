@@ -5,6 +5,8 @@ module Rega
   #One of either values, source or url must be defined 
   class Data
     
+    attr_accessor :transform
+    
     def initialize(name: '', format: 'json', **options)
       @name, @format = name, format
       options.each { |name, value| instance_variable_set("@#{name}", value) }

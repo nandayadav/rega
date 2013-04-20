@@ -5,6 +5,7 @@ Bundler.require
 class App < Sinatra::Base
   enable :logging
   use Rack::Session::Cookie
+  include Rega::Charts
   
   before do
     content_type :json unless request.path_info == '/'
@@ -15,7 +16,7 @@ class App < Sinatra::Base
   end
   
   get '/bar' do
-    chart = Rega::Bar.new(values: [{ x: 'A', y: 20}, { x: 'B', y: 12}, { x: 'C', y: 52}, { x: 'D', y: 102}]) 
+    chart = Bar.new(values: [{ x: 'A', y: 20}, { x: 'B', y: 12}, { x: 'C', y: 52}, { x: 'D', y: 102}]) 
     c = chart.generate do |config|
       config.fill_color = 'green'
     end
@@ -24,7 +25,7 @@ class App < Sinatra::Base
 
   
   get '/bar_with_external_url' do
-    chart = Rega::Bar.new(url: '/data')
+    chart = Bar.new(url: '/data')
     c = chart.generate do |config|
       config.fill_color = 'green'  
     end
@@ -32,13 +33,13 @@ class App < Sinatra::Base
   end
   
   get '/area' do
-    chart = Rega::Area.new(values: [{ x: 1, y: 20}, { x: 2, y: 12}, { x: 3, y: 52}, { x: 4, y: 102}]) 
+    chart = Area.new(values: [{ x: 1, y: 20}, { x: 2, y: 12}, { x: 3, y: 52}, { x: 4, y: 102}]) 
     c = chart.generate
     c.to_json
   end
   
   get '/scatter_plot' do
-    chart = Rega::ScatterPlot.new(values: [{ x: 1, y: 20}, { x: 2, y: 12}, { x: 3, y: 52}, { x: 4, y: 102}]) 
+    chart = ScatterPlot.new(values: [{ x: 1, y: 20}, { x: 2, y: 12}, { x: 3, y: 52}, { x: 4, y: 102}]) 
     c = chart.generate do |config|
       #config.fill_color = 'green'  
     end
@@ -46,13 +47,14 @@ class App < Sinatra::Base
   end
   
   get '/donut' do
-    chart = Rega::Donut.new(values: [12, 45, 66, 34]) 
+    #chart = Donut.new(values: [12, 45, 66, 34]) 
+    chart = Donut.new(url: '/data2', indicator: 'num_clicks') 
     c = chart.generate
     c.to_json
   end
   
   get '/pie' do
-    chart = Rega::Donut.new(values: [12, 45, 66, 34]) 
+    chart = Donut.new(values: [12, 45, 66, 34]) 
     c = chart.generate do |config|
       config.inner_radius = 0
     end
@@ -60,7 +62,7 @@ class App < Sinatra::Base
   end
   
   get '/line' do
-    chart = Rega::Line.new(values: [{ x: 1, y: 20}, { x: 2, y: 12}, { x: 3, y: 52}, { x: 4, y: 102}]) 
+    chart = Line.new(values: [{ x: 1, y: 20}, { x: 2, y: 12}, { x: 3, y: 52}, { x: 4, y: 102}]) 
     c = chart.generate
     c.to_json
   end
@@ -68,6 +70,14 @@ class App < Sinatra::Base
   get '/data' do
     #[{x: 45, y: 33}, {x: 23, y: 44}, {x: 56, y: 34}].to_json
     [{ x: 1, y: 20}, { x: 2, y: 12}, { x: 3, y: 52}, { x: 4, y: 12}].to_json
+  end
+  
+  get '/data2' do
+    [
+      {network: "Twitter", num_posts: 132, num_clicks: 445},
+      {network: "Facebook", num_posts: 39, num_clicks: 123},
+      {network: "Linkedin", num_posts: 154, num_clicks: 45}
+    ].to_json
   end
 
 end

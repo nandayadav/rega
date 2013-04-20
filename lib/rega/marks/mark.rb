@@ -8,15 +8,21 @@ module Rega
       
       attr_accessor :fill_color, :hover_color, :fill_opacity, :hover_opacity
       
-      def initialize(fill_color: 'red', hover_color: 'orange', fill_opacity: 1.0, hover_opacity: 1.0)
+      def initialize(fill_color: 'red', hover_color: 'orange', fill_opacity: 1.0, hover_opacity: 1.0, **options)
         @fill_color = fill_color
         @hover_color = hover_color
         @fill_opacity = fill_opacity
         @hover_opacity = hover_opacity
+        options.each { |name, value| instance_variable_set("@#{name}", value) }
       end
       
       def attributes
         {type: @type, from: {data: 'table'}, properties: properties}
+      end
+      
+      #Override in child class
+      def properties
+        {}
       end
       
     end
