@@ -6,6 +6,7 @@ module Rega
   class Data
     
     attr_accessor :transform
+    attr_reader :values, :url, :format
     
     def initialize(name: '', format: 'json', **options)
       @name, @format = name, format
