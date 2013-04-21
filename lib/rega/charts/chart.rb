@@ -27,6 +27,14 @@ module Rega
         options.each { |name, value| instance_variable_set("@#{name}", value) if VALID_ATTRS.include?(name) }
       end
       
+      def derived_data
+        if @url
+          Data.new(name: 'table', url: @url) 
+        else
+          Data.new(name: 'table', values: @values)
+        end
+      end
+      
       #Need - visualization, marks and data
       #Optional - scales, axes(in some cases)
       def generate(&block)
@@ -35,7 +43,8 @@ module Rega
         h[:data] = [@data.attributes]
         h[:scales] = @scales.map(&:attributes) if @scales
         h[:axes] = @axes.map(&:attributes) if @axes
-        h[:marks] = [@marks.attributes] if @marks
+        #TODo: clean this up
+        h[:marks] = @marks.map(&:attributes) if @marks
         h
       end
       

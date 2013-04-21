@@ -5,15 +5,27 @@
     <script src="http://trifacta.github.com/vega/vega.js"></script>
   </head>
   <body>
-    <div style="width: 1100px;">
+    <div style="min-width: 1200px;" id="bars">
+      <h3>Bar Chart examples</h3>
       <div id="bar" style="float: left;"></div>
-      <div id="area" style="float: left;"></div>
-      <div id="donut" style="float: right;"></div>
+      <div id="bar2" style="float: left;"></div>
+      <div id="bar3" style="float: left;"></div>
     </div>
-    <div style="width: 1100px;">
+    <div style="width: 1100px;" id="pies">
+      <h3>Donut/Pie Chart examples</h3>
+      <div id="donut" style="float: left;"></div>
       <div id="pie" style="float: left;"></div>
+      <div id="proportional" style="float: left;"></div>
+    </div>
+    <div style="width: 1100px;" id="lines">
+      <h3>Line & Area Chart examples</h3>
+      <div id="area" style="float: left;"></div>
       <div id="scatter" style="float: left;"></div>
       <div id="line" style="float: right;"></div>
+    </div>
+    <div style="width: 1100px;">
+      
+      
     </div>
   </body>
   <script type="text/javascript">
@@ -21,10 +33,13 @@
     function parse(spec, container) {
       vg.parse.spec(spec, function(chart) { chart({el: container, renderer: 'canvas'}).update(); });
     }
-    // parse("http://localhost:3002/bar", "#bar");
+    parse("http://localhost:3002/bar", "#bar");
+    parse("http://localhost:3002/bar_with_external_url", "#bar2");
+    parse("http://localhost:3002/bar_with_external_url", "#bar3");
     // parse("http://localhost:3002/area", "#area");
     parse("http://localhost:3002/donut", "#donut");
-    // parse("http://localhost:3002/pie", "#pie");
+    parse("http://localhost:3002/pie", "#pie");
+    parse("http://localhost:3002/proportional_donut", "#proportional");
     // parse("http://localhost:3002/scatter_plot", "#scatter");
     // parse("http://localhost:3002/line", "#line");
   </script>

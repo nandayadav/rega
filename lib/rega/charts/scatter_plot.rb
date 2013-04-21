@@ -13,7 +13,7 @@ module Rega
       
       def associate_defaults
         @visualization = Visualization.new(name: "scatter", padding: { left: 30, right: 30, top: 10, bottom: 40})
-        @data = @url ? Data.new(name: 'table', url: @url) : Data.new(name: 'table', values: @values)
+        @data = derived_data
         @scales = [
                           Scale.new(name: 'x', range: 'width', zero: false, domain: {data: 'table', field: 'data.x'}),
                           Scale.new(name: 'y', range: 'height', domain: {data: 'table', field: 'data.y'})
@@ -22,7 +22,7 @@ module Rega
                         Axis.new(scale: 'x', type: 'x'),
                         Axis.new(scale: 'y', type: 'y')
                       ]
-        @marks = Marks::Symbol.new
+        @marks = [Marks::Symbol.new]
       end
     
     end #Class ScatterPlot

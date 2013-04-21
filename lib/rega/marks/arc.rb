@@ -11,17 +11,24 @@ module Rega
         super(**options)
       end
       
+      def outer_radius_value
+        @outer_radius.is_a?(Hash) ? @outer_radius : {value: @outer_radius}
+      end
       
+      def inner_radius_value
+        @inner_radius.is_a?(Hash) ? @inner_radius : {value: @inner_radius}
+      end
       #innerRadius = 0 means pie chart
+      #TODO: get rid of x, y hardcoded values
       def properties
         { 
           enter: {
-                      x: {value: 200},
+                      x: {value: 150},
                       y: {value: 200},
                       startAngle: {field: 'startAngle'},
                       endAngle: {field: 'endAngle'},
-                      innerRadius: {value: @inner_radius},
-                      outerRadius: {value: @outer_radius},
+                      innerRadius: inner_radius_value,
+                      outerRadius: outer_radius_value,
                       stroke: {value: @stroke_color},
                       strokeWidth: {value: @stroke_width}
                     },

@@ -18,16 +18,16 @@ class App < Sinatra::Base
   get '/bar' do
     chart = Bar.new(values: [{ x: 'A', y: 20}, { x: 'B', y: 12}, { x: 'C', y: 52}, { x: 'D', y: 102}]) 
     c = chart.generate do |config|
-      config.fill_color = 'green'
+      #config.fill_color = 'green'
     end
     c.to_json
   end
 
   
   get '/bar_with_external_url' do
-    chart = Bar.new(url: '/data')
+    chart = Bar.new(url: '/data2', x: 'breed', y: 'num_posts')
     c = chart.generate do |config|
-      config.fill_color = 'green'  
+      #config.fill_color = 'green'  
     end
     c.to_json
   end
@@ -48,15 +48,23 @@ class App < Sinatra::Base
   
   get '/donut' do
     #chart = Donut.new(values: [12, 45, 66, 34]) 
-    chart = Donut.new(url: '/data2', indicator: 'num_clicks') 
+    chart = Donut.new(url: '/data2', indicator: 'num_clicks', legend: 'breed') 
     c = chart.generate
     c.to_json
   end
   
   get '/pie' do
-    chart = Donut.new(values: [12, 45, 66, 34]) 
+    chart = Donut.new(values: [12, 45, 66, 34], inner_radius: 0) 
     c = chart.generate do |config|
-      config.inner_radius = 0
+      #config.inner_radius = 0
+    end
+    c.to_json
+  end
+  
+  get '/proportional_donut' do
+    chart = Donut.new(url: '/data2', indicator: 'num_posts', legend: 'breed', inner_radius: 30, proportional: true) 
+    c = chart.generate do |config|
+      #config.inner_radius = 0
     end
     c.to_json
   end
@@ -74,9 +82,10 @@ class App < Sinatra::Base
   
   get '/data2' do
     [
-      {network: "Twitter", num_posts: 132, num_clicks: 445},
-      {network: "Facebook", num_posts: 39, num_clicks: 123},
-      {network: "Linkedin", num_posts: 154, num_clicks: 45}
+      {breed: "Labrador", num_posts: 132, num_clicks: 445},
+      {breed: "Beagle", num_posts: 39, num_clicks: 123},
+      {breed: "Greyhound", num_posts: 154, num_clicks: 45},
+      {breed: "Wolfhound", num_posts: 94, num_clicks: 205}
     ].to_json
   end
 

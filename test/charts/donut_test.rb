@@ -6,10 +6,10 @@ class DonutTest <  MiniTest::Unit::TestCase
     @donut = Rega::Charts::Donut.new(values: [12, 45, 34])
   end
       
-  def test_value
-    assert_equal 'data', @donut.value
+  def test_indicator_value
+    assert_equal 'data', @donut.indicator_value
     d = Rega::Charts::Donut.new(url: '/some_data_url', indicator: 'tweets')
-    assert_equal 'data.tweets', d.value
+    assert_equal 'data.tweets', d.indicator_value
   end
   
   def test_derived_data

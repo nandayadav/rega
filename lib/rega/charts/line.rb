@@ -12,7 +12,7 @@ module Rega
       
       def associate_defaults
         @visualization = Visualization.new(name: "line", padding: { left: 30, right: 30, top: 10, bottom: 40})
-        @data = @url ? Data.new(name: 'table', url: @url) : Data.new(name: 'table', values: @values)
+        @data = derived_data
         @scales = [
                           Scale.new(name: 'x', type: 'ordinal', range: 'width', domain: {data: 'table', field: 'data.x'}),
                           Scale.new(name: 'y', range: 'height', domain: {data: 'table', field: 'data.y'})
@@ -22,7 +22,7 @@ module Rega
                         Axis.new(scale: 'x', type: 'x'),
                         Axis.new(scale: 'y', type: 'y')
                       ]
-        @marks = Marks::Line.new
+        @marks = [Marks::Line.new]
       end
       
     end #Class Line
