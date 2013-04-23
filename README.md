@@ -34,6 +34,15 @@ c = bar.generate do |config|
   config.hover_color = 'orange'
 end
 
+See example_app(Sinatra app) for more examples
+
+TODO: 
+Charts yet to implement
+1. Stacked Bar/Area 
+2. Treemap
+3. Wordcloud
+4. Geo maps
+
 c.to_json
 
 ## Contributing
