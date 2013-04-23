@@ -1,6 +1,14 @@
 # Rega
 Keep it simple
-TODO: Write a gem description
+This library provides simple Wrapper for generatin JSON that's consumed by VEGA(visualization grammar based on d3.js). It should be used for creating simple, standard charts(bar, line, pie/donut, scatter). More chart types will be added later on. 
+
+Options for consuming the json:
+1. Render in html
+Rendering chart is done using Vega parser, and can be rendered inside a canvas or svg. More info instructions: https://github.com/trifacta/vega/wiki/Runtime
+Also see included example_app, which is a typical sinatra app that has few charts defined and all them are rendered in single page using vega parser. 
+
+2. Server side(headless mode)
+https://github.com/trifacta/vega/wiki/Headless-Mode
 
 ## Installation
 
@@ -17,8 +25,16 @@ Or install it yourself as:
     $ gem install rega
 
 ## Usage
+include Rega
+Bar Chart
+bar = Charts::Bar.new(values: [...])
+c = bar.generate.to_json or (to customize)
+c = bar.generate do |config|
+  config.fill_color = '#5cc'
+  config.hover_color = 'orange'
+end
 
-TODO: Write usage instructions here
+c.to_json
 
 ## Contributing
 
