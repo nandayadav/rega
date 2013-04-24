@@ -5,6 +5,14 @@ module Rega
     #Represents a generic bar chart with defaults in place
     class Bar < Chart
       
+      def_delegators :@mark, :fill_color, :fill_color=
+      def_delegators :@mark, :fill_opacity, :fill_opacity=
+      def_delegators :@mark, :hover_opacity, :hover_opacity=
+      def_delegators :@mark, :hover_color, :hover_color=
+      def_delegators :@mark, :offset, :offset=
+      
+      attr_reader :mark
+      
       def initialize(values: [], x: "x", y: "y", **options)
         @values = values
         @x, @y = x, y
@@ -32,7 +40,8 @@ module Rega
                         Axis.new(scale: 'x', type: 'x'),
                         Axis.new(scale: 'y', type: 'y')
                       ]
-        @marks = [Marks::Rect.new(x_field: x_field, y_field: y_field)]
+        @mark = Marks::Rect.new(x_field: x_field, y_field: y_field)
+        @marks = [@mark]
       end
       
     end #Class Bar

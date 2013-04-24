@@ -3,9 +3,10 @@ module Rega
     
     class Rect < Mark
     
-      def initialize(x_field: "data.x", y_field: "data.y", **options)
+      attr_accessor :offset
+      def initialize(x_field: "data.x", y_field: "data.y", offset: -2, **options)
         @type = 'rect'
-        @x_field, @y_field = x_field, y_field
+        @x_field, @y_field, @offset = x_field, y_field, offset
         super(**options)
       end
       
@@ -14,7 +15,7 @@ module Rega
         {
           enter: {
                         x: {scale: 'x', field: @x_field},
-                        width: {scale: 'x', band: true, offset: -1},
+                        width: {scale: 'x', band: true, offset: @offset},
                         y: {scale: 'y', field: @y_field},
                         y2: {scale: 'y', value: 0}
                       },

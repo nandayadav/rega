@@ -17,17 +17,23 @@ class App < Sinatra::Base
   
   get '/bar' do
     chart = Bar.new(values: [{ x: 'A', y: 20}, { x: 'B', y: 12}, { x: 'C', y: 52}, { x: 'D', y: 102}]) 
-    c = chart.generate do |config|
-      #config.fill_color = 'green'
-    end
+    c = chart.generate
     c.to_json
   end
 
   
   get '/bar_with_external_url' do
     chart = Bar.new(url: '/data2', x: 'breed', y: 'indicator_2')
+    c = chart.generate
+    c.to_json
+  end
+  
+  get '/customized_bar' do
+    chart = Bar.new(values: [{ x: 'A', y: 20}, { x: 'B', y: 12}, { x: 'C', y: 52}, { x: 'D', y: 102}]) 
     c = chart.generate do |config|
-      #config.fill_color = 'green'  
+      config.fill_color = 'green'  
+      config.hover_opacity = 0.5
+      config.offset = -5
     end
     c.to_json
   end
