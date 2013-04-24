@@ -26,12 +26,12 @@ Or install it yourself as:
 
 ##Requirements
 Ruby 2.0
-If there's enough requests/demand for 1.9 I will provide support for it, but for now it only supports 2.0 mainly because 2.0 has been out for a while out there and Matz wants us to use it. :)
 
 ## Usage
 ```ruby
 include Rega
 
+#Bar chart
 bar = Charts::Bar.new(values: [...])
 c = bar.generate.to_json
 #To customize
@@ -40,6 +40,32 @@ c = bar.generate do |config|
   config.hover_color = 'orange'
 end
 c.to_json
+
+#Donut Chart(with data endpoint)
+chart = Donut.new(url: '/data', indicator: 'indicator_1', legend: 'breed') 
+c = chart.generate
+c.to_json
+
+#Scatter
+chart = ScatterPlot.new(url: '/data_scatter', x: 'indicator_1', y: 'indicator_2') 
+c = chart.generate
+c.to_json
+
+#Sinatra endpoints used above
+get '/data' do
+  [
+    {breed: "Labrador", indicator_2: 132, indicator_1: 445},
+    {breed: "Beagle", indicator_2: 39, indicator_1: 123},
+    {breed: "Greyhound", indicator_2: 154, indicator_1: 45},
+    {breed: "Wolfhound", indicator_2: 94, indicator_1: 205}
+  ].to_json
+end
+  
+get '/data_scatter' do
+  result = []
+  100.times { result << {indicator_2: rand(500), indicator_1: rand(100)} }
+  result.to_json
+end
 ```
 
 See example_app(Sinatra app) for more examples
