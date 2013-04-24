@@ -29,15 +29,18 @@ Ruby 2.0
 If there's enough requests/demand for 1.9 I will provide support for it, but for now it only supports 2.0 mainly because 2.0 has been out for a while out there and Matz wants us to use it. :)
 
 ## Usage
+```ruby
 include Rega
 
 bar = Charts::Bar.new(values: [...])
-c = bar.generate.to_json or (to customize)
+c = bar.generate.to_json
+#To customize
 c = bar.generate do |config|
   config.fill_color = '#5cc'
   config.hover_color = 'orange'
 end
 c.to_json
+```
 
 See example_app(Sinatra app) for more examples
 
