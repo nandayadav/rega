@@ -1,7 +1,9 @@
 # Rega
-This library provides simple Wrapper for generatin JSON that's consumed by VEGA(visualization grammar based on d3.js). It should be used for creating simple, standard charts(bar, line, pie/donut, scatter). More chart types will be added later on. Ultimate goal is easily render charts and graphs in sinatra/rails app using vega runtime parser without writing bunch of javascript. 
+This library provides simple Wrapper for generatin JSON that's consumed by [VEGA](https://github.com/trifacta/vega) (visualization grammar based on d3.js). It should be used for creating simple, standard charts(bar, line, pie/donut, scatter). More chart types will be added later on. Ultimate goal is easily render charts and graphs in sinatra/rails app using vega runtime parser without writing bunch of javascript. 
 
 CAUTION: under active development, nowhere near ready for production usage yet
+
+[Demo App](http://salty-beyond-8121.herokuapp.com/)
 
 Options for consuming the json:
 * Render in html
