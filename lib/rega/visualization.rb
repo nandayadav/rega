@@ -5,7 +5,7 @@ module Rega
   class Visualization
     
     #Ignoring viewport
-    attr_reader :name, :width, :height, :padding
+    attr_accessor :name, :width, :height, :padding
     
     def initialize(name: "", width: 300, height: 400, padding: {})
       @name = name

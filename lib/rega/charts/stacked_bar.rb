@@ -2,11 +2,11 @@ module Rega
   
   module Charts
     
-    #Represents a generic area chart
-    class ScatterPlot < Chart
+    #Represents a generic bar chart with defaults in place
+    class StackedBar < Chart
       
       def initialize(values: [], x: "x", y: "y", **options)
-        @values = values #Array of values for data
+        @values = values
         @x, @y = x, y
         options.each { |name, value| instance_variable_set("@#{name}", value) }
         associate_defaults
@@ -20,21 +20,22 @@ module Rega
         "data.#{@y}"
       end
       
+      
       def associate_defaults
-        @visualization = Visualization.new(name: "scatter", padding: { left: 30, right: 30, top: 10, bottom: 40})
+        @visualization = Visualization.new(name: "bar", padding: { left: 30, right: 30, top: 10, bottom: 40})
         @data = derived_data
         @scales = [
-                          Scale.new(name: 'x', range: 'width', domain: {data: 'table', field: x_field}),
+                          Scale.new(name: 'x', type: 'ordinal', range: 'width', domain: {data: 'table', field: x_field}),
                           Scale.new(name: 'y', range: 'height', domain: {data: 'table', field: y_field})
                         ]
         @axes = [
                         Axis.new(scale: 'x', type: 'x'),
                         Axis.new(scale: 'y', type: 'y')
                       ]
-        @marks = [Marks::Symbol.new(x_field: x_field, y_field: y_field)]
+        @marks = [Marks::Rect.new(x_field: x_field, y_field: y_field)]
       end
-    
-    end #Class ScatterPlot
+      
+    end #Class StackedBar
     
   end #Module Charts
   

@@ -1,6 +1,6 @@
 # Rega
-Keep it simple
-This library provides simple Wrapper for generatin JSON that's consumed by VEGA(visualization grammar based on d3.js). It should be used for creating simple, standard charts(bar, line, pie/donut, scatter). More chart types will be added later on. 
+This library provides simple Wrapper for generatin JSON that's consumed by VEGA(visualization grammar based on d3.js). It should be used for creating simple, standard charts(bar, line, pie/donut, scatter). More chart types will be added later on. Ultimate goal is easily render charts and graphs in sinatra/rails app using vega runtime parser without writing bunch of javascript. 
+CAUTION: under active development, nowhere near ready for production usage yet
 
 Options for consuming the json:
 1. Render in html
@@ -24,26 +24,32 @@ Or install it yourself as:
 
     $ gem install rega
 
+##Requirements
+Ruby 2.0
+If there's enough requests/demand for 1.9 I will provide support for it, but for now it only supports 2.0 mainly because 2.0 has been out for a while out there and Matz wants us to use it. :)
+
 ## Usage
 include Rega
-Bar Chart
+
 bar = Charts::Bar.new(values: [...])
 c = bar.generate.to_json or (to customize)
 c = bar.generate do |config|
   config.fill_color = '#5cc'
   config.hover_color = 'orange'
 end
+c.to_json
 
 See example_app(Sinatra app) for more examples
 
 TODO: 
 Charts yet to implement
-1. Stacked Bar/Area 
+1. Stacked Bar/Area/Multi Line
 2. Treemap
-3. Wordcloud
-4. Geo maps
+3. Maps
 
-c.to_json
+Add a validation layer for chart attributes
+
+
 
 ## Contributing
 

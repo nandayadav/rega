@@ -16,8 +16,8 @@ module Rega
                       y: {scale: 'y', field: 'data.y'},
                       y2: {scale: 'y', value: 0}
                     },
-          update: {fill: {value: @fill_color}, fillOpacity: {value: @fill_opacity}},
-          hover: {fill: {value: @hover_color}, fillOpacity: {value: @hover_opacity}}
+          update: update,
+          hover: hover
         }
       end
       

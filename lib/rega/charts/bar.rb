@@ -32,7 +32,7 @@ module Rega
                         Axis.new(scale: 'x', type: 'x'),
                         Axis.new(scale: 'y', type: 'y')
                       ]
-        @marks = [Marks::Rect.new(x: @x, y: @y)]
+        @marks = [Marks::Rect.new(x_field: x_field, y_field: y_field)]
       end
       
     end #Class Bar

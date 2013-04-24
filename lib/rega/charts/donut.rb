@@ -21,6 +21,14 @@ module Rega
       def legend_value
         @legend ? "data.#{@legend}" : nil
       end
+      
+      def x_position
+        width/2
+      end
+      
+      def y_position
+        height/2
+      end
     
 
       
@@ -32,10 +40,11 @@ module Rega
         color_scale = Scale.new(name: 'color', type: 'ordinal', range: 'category10') 
         @scales = [color_scale]
         if @proportional
+          
           @scales << Scale.new(name: "r", type: 'sqrt', domain: {data: 'table', field: indicator_value}, range: [@inner_radius, 120])
-          @marks = [Marks::Arc.new(field: indicator_value, inner_radius: @inner_radius, outer_radius: {scale: 'r', field: indicator_value})]
+          @marks = [Marks::Arc.new(x: x_position, y: y_position, field: indicator_value, inner_radius: @inner_radius, outer_radius: {scale: 'r', field: indicator_value})]
         else
-          @marks = [Marks::Arc.new(field: indicator_value, inner_radius: @inner_radius)]
+          @marks = [Marks::Arc.new(x: x_position, y: y_position, field: indicator_value, inner_radius: @inner_radius)]
         end
         if legend_value
           @scales << Scale.new(name: 'x', type: 'ordinal', range: 'width', domain: {data: 'table', field: legend_value})

@@ -20,6 +20,8 @@ module Rega
       #Transform attr
       def_delegators :@data, :transform, :transform=
       
+      def_delegators :@visualization, :width, :width=, :height, :height=
+      
       attr_accessor :visualization, :axes, :scales, :data, :marks, :url
       VALID_ATTRS = %w(visualization axes scales data marks url)
       
@@ -43,7 +45,6 @@ module Rega
         h[:data] = [@data.attributes]
         h[:scales] = @scales.map(&:attributes) if @scales
         h[:axes] = @axes.map(&:attributes) if @axes
-        #TODo: clean this up
         h[:marks] = @marks.map(&:attributes) if @marks
         h
       end
