@@ -20,7 +20,7 @@ class BarTest <  MiniTest::Unit::TestCase
   def test_associate_defaults
     assert_equal 2, @bar.scales.size
     assert_equal 2, @bar.axes.size
-    assert_kind_of Rega::Marks::Rect, @bar.mark 
+    assert_instance_of Rega::Marks::Rect, @bar.mark 
   end
   
   def test_customization

@@ -16,7 +16,7 @@ class ChartTest <  MiniTest::Unit::TestCase
     assert_kind_of Array, c[:data]
     assert_kind_of Array, c[:scales]
     assert_equal c[:axes], nil
-    assert_kind_of Array, c[:marks]
+    assert_instance_of Array, c[:marks]
   end
   
   def test_customization
