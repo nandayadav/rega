@@ -16,7 +16,8 @@ module Rega
       def initialize(values: [], x: "x", y: "y", **options)
         @values = values
         @x, @y = x, y
-        super(**options)
+        options.each { |name, value| instance_variable_set("@#{name}", value) }
+        # super(**options)
         associate_defaults
       end
       
