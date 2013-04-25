@@ -33,6 +33,8 @@ Or install it yourself as:
 ##Requirements
 Ruby 2.0
 
+Vega & d3 JS for rendering
+
 ## Usage
 ```ruby
 include Rega
