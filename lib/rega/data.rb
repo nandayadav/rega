@@ -8,7 +8,8 @@ module Rega
     attr_accessor :transform
     attr_reader :values, :url, :format
     
-    def initialize(name: '', format: 'json', **options)
+    
+    def initialize(name: 'table', format: 'json', **options)
       @name, @format = name, format
       options.each { |name, value| instance_variable_set("@#{name}", value) }
     end
