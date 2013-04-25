@@ -15,8 +15,8 @@ module Rega
         @visualization = Visualization.new(name: "area", padding: { left: 30, right: 30, top: 10, bottom: 40})
         @data = derived_data
         @scales = [
-                          Scale.new(name: 'x', type: 'linear', zero: false, range: 'width', domain: {data: 'table', field: 'data.x'}),
-                          Scale.new(name: 'y', type: 'linear', nice: true, range: 'height', domain: {data: 'table', field: 'data.y'})
+                          Scales::Linear.new(name: 'x', zero: false, range: 'width', domain: {data: 'table', field: 'data.x'}),
+                          Scales::Linear.new(name: 'y', nice: true, range: 'height', domain: {data: 'table', field: 'data.y'})
                         ]
                         
         @axes = [

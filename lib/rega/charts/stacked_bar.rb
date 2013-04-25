@@ -25,8 +25,8 @@ module Rega
         @visualization = Visualization.new(name: "bar", padding: { left: 30, right: 30, top: 10, bottom: 40})
         @data = derived_data
         @scales = [
-                          Scale.new(name: 'x', type: 'ordinal', range: 'width', domain: {data: 'table', field: x_field}),
-                          Scale.new(name: 'y', range: 'height', domain: {data: 'table', field: y_field})
+                          Scales::Scale.new(name: 'x', type: 'ordinal', range: 'width', domain: {data: 'table', field: x_field}),
+                          Scales::Scale.new(name: 'y', range: 'height', domain: {data: 'table', field: y_field})
                         ]
         @axes = [
                         Axis.new(scale: 'x', type: 'x'),

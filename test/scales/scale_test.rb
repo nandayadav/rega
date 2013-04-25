@@ -1,9 +1,9 @@
-require_relative 'test_helper'
+require_relative '../test_helper'
 
 class ScaleTest <  MiniTest::Unit::TestCase
 
   def setup
-    @scale = Rega::Scale.new(name: 'x', domain: [1..100])
+    @scale = Rega::Scales::Linear.new(name: 'x', domain: [1..100])
   end
   
   def test_attributes
