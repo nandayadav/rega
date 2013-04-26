@@ -4,10 +4,11 @@ module Rega
     
     #Linear Scale
   
-    class Linear < Scale
+    class Time < Scale
       
-      def initialize(**options)
-        @type = 'linear'
+      def initialize(clamp: false, nice: true, **options)
+        @type = 'time'
+        @clamp, @nice = clamp, nice
         super(**options)
       end
       
